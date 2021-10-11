@@ -1,0 +1,14 @@
+
+train_data_path: /content/drive/MyDrive/data/train_tanglish.csv
+val_data_path: /content/drive/MyDrive/data/test_tanglish.csv
+test_data_path: /content/drive/MyDrive/data/test_tanglish.csv
+train_text: tweets
+train_label: Labels
+val_text: tweets
+val_label: label
+test_text: tweets
+test_label: label
+save_model_path: /content/mal.bin
+finetuned_model_path: /content/drive/MyDrive/Models/mang.pt
+save_metrics_path: content/metrics.json
+save_preds_path: content/presds.csv

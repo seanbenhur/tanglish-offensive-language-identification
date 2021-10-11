@@ -1,0 +1,4 @@
+
+model_name: google/muril_base_cased
+tokenizer_name: google/muril_base_cased
+model_type: Mean_Pooling_Model
