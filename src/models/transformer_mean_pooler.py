@@ -3,13 +3,13 @@ import torch.nn as nn
 from transformers import AutoConfig, AutoModel
 
 
-class Mean_Pooling_Model(nn.Module):
-    def __init__(self, path, dropout, num_labels):
+class MeanPoolingModel(nn.Module):
+    def __init__(self, model_name):
         super().__init__()
 
-        config = AutoConfig.from_pretrained(path)
-        self.model = AutoModel.from_pretrained(path, config=config)
-        self.linear = nn.Linear(config.hidden_size, num_labels)
+        config = AutoConfig.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name, config=config)
+        self.linear = nn.Linear(config.hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
 

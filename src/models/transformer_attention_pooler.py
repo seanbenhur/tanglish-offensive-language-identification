@@ -23,22 +23,13 @@ class AttentionHead(nn.Module):
 
 
 class Attention_Pooling_Model(nn.Module):
-    def __init__(self, path, dropout, num_labels,init_weights=False):
+    def __init__(self, path, dropout, num_labels):
         super().__init__()
         self.bert = AutoModel.from_pretrained(path)
         self.config = AutoConfig.from_pretrained(path)
         self.head = AttentionHead(self.config.hidden_size, self.config.hidden_size)
         self.dropout = nn.Dropout(dropout)
         self.linear = nn.Linear(self.config.hidden_size, num_labels)
-
-        if init_weights=True:
-            self._init_weights(self.linear)
-        
-    def _init_weights(self, module):
-        if isinstance(module, nn.Linear):
-            module.weight.data.normal_(mean=0.0, std=self.config.initializer_range)
-            if module.bias is not None:
-                module.bias.data.zero_()
 
     def forward(self, input_ids, attention_mask):
         x = self.bert(input_ids, attention_mask)
